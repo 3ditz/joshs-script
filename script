@@ -1,0 +1,98 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local AutoParry = Instance.new("TextButton")
+local UnknownESP = Instance.new("TextButton")
+local CrateEsp = Instance.new("TextButton")
+local HitboxExpander = Instance.new("TextButton")
+local TextLabel = Instance.new("TextLabel")
+
+--Properties:
+
+ScreenGui.Parent = game.CoreGui
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Frame.Position = UDim2.new(0.67166537, 0, 0.645454526, 0)
+Frame.Size = UDim2.new(0, 416, 0, 234)
+Frame.Active = true
+Frame.Draggable = true
+
+AutoParry.Name = "Auto Parry"
+AutoParry.Parent = Frame
+AutoParry.BackgroundColor3 = Color3.fromRGB(42, 0, 255)
+AutoParry.Position = UDim2.new(0, 0, 0.305343509, 0)
+AutoParry.Size = UDim2.new(0, 200, 0, 50)
+AutoParry.Font = Enum.Font.SourceSans
+AutoParry.Text = "Auto Parry"
+AutoParry.TextColor3 = Color3.fromRGB(0, 0, 0)
+AutoParry.TextSize = 14.000
+AutoParry.MouseButton1Down:connect(function()
+	loadstring(game:HttpGet("https://pastebin.com/raw/j8p5F0j8"))()
+end)
+
+UnknownESP.Name = "Unknown ESP"
+UnknownESP.Parent = Frame
+UnknownESP.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+UnknownESP.Position = UDim2.new(0.519230783, 0, 0.305343509, 0)
+UnknownESP.Size = UDim2.new(0, 200, 0, 50)
+UnknownESP.Font = Enum.Font.SourceSans
+UnknownESP.Text = "Unknown Esp"
+UnknownESP.TextColor3 = Color3.fromRGB(0, 0, 0)
+UnknownESP.TextSize = 14.000
+
+
+CrateEsp.Name = "Crate Esp"
+CrateEsp.Parent = Frame
+CrateEsp.BackgroundColor3 = Color3.fromRGB(21, 0, 255)
+CrateEsp.Position = UDim2.new(0, 0, 0.641221344, 0)
+CrateEsp.Size = UDim2.new(0, 200, 0, 50)
+CrateEsp.Font = Enum.Font.SourceSans
+CrateEsp.Text = "Crate Esp"
+CrateEsp.TextColor3 = Color3.fromRGB(0, 0, 0)
+CrateEsp.TextSize = 14.000
+CrateEsp.MouseButton1Down:connect(function()
+	loadstring(game:HttpGet("https://gist.githubusercontent.com/coolguywithabigdong/d8fa47670dee69d53de5ad0c8d0e51be/raw/521ac0e8664da5a5ca5f25ff3497391c179da259/gistfile1.txt", true))()
+end)
+
+HitboxExpander.Name = "Hitbox Expander"
+HitboxExpander.Parent = Frame
+HitboxExpander.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+HitboxExpander.Position = UDim2.new(0.519230783, 0, 0.641221344, 0)
+HitboxExpander.Size = UDim2.new(0, 200, 0, 50)
+HitboxExpander.Font = Enum.Font.SourceSans
+HitboxExpander.Text = "Hitbox Expander"
+HitboxExpander.TextColor3 = Color3.fromRGB(0, 0, 0)
+HitboxExpander.TextSize = 14.000
+HitboxExpander.MouseButton1Down:connect(function()
+	_G.HeadSize = 7 -- edit  here, 1-7ish is less blatant if used correctly script created by pastebin user
+	_G.Disabled = true
+
+	game:GetService('RunService').RenderStepped:connect(function()
+		if _G.Disabled then
+			for i,v in next, game:GetService('Players'):GetPlayers() do
+				if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+					pcall(function()
+						v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+						v.Character.HumanoidRootPart.Transparency = 1 -- edit if you want it to be visible or transparent
+						v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue")
+						v.Character.HumanoidRootPart.Material = "Smooth Plastic"
+						v.Character.HumanoidRootPart.CanCollide = false
+					end)
+				end
+			end
+		end
+	end)
+end)
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+TextLabel.Size = UDim2.new(0, 416, 0, 50)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = " Mortem Metallum Gui | Made by 3ditz#1111      "
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextSize = 14.000
